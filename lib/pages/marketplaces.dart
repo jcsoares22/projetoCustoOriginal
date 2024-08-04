@@ -23,7 +23,7 @@ class _MarketplacesState extends State<Marketplaces> {
 
   @override
   void dispose() {
-    // Dispose os controllers quando o widget for removido
+    // Dispose dos controllers quando o widget for removido
     _codigoController.dispose();
     _empresaController.dispose();
     _comissaoController.dispose();
@@ -36,95 +36,87 @@ class _MarketplacesState extends State<Marketplaces> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Markettplaces'),
-        ),
-        drawer: const AppDrawer(),
-        body: Container(
-          margin: EdgeInsets.all(15),
-          child: Form(
-              child: ListView(
+      appBar: AppBar(
+        title: const Text('Marketplaces'),
+      ),
+      drawer: const AppDrawer(),
+      body: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Form(
+          key: _formKey,
+          child: ListView(
             children: <Widget>[
               Buttons(),
-              TextFormField(
-                cursorWidth: 50,
+              _buildTextFormField(
                 controller: _codigoController,
-                decoration: InputDecoration(labelText: 'Código'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o código';
-                  }
-                  return null;
-                },
+                label: 'Código',
+                validatorMessage: 'Por favor, insira o código',
+                keyboardType: TextInputType.number,
               ),
-              TextFormField(
+              _buildTextFormField(
                 controller: _empresaController,
-                decoration: InputDecoration(labelText: 'Empresa'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira a empresa';
-                  }
-                  return null;
-                },
+                label: 'Empresa',
+                validatorMessage: 'Por favor, insira a empresa',
               ),
-              TextFormField(
+              _buildTextFormField(
                 controller: _comissaoController,
-                decoration: InputDecoration(labelText: 'Comissão Valor Ferte'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira a comissão';
-                  }
-                  return null;
-                },
+                label: 'Comissão Valor Ferte',
+                validatorMessage: 'Por favor, insira a comissão',
                 keyboardType: TextInputType.number,
               ),
-              TextFormField(
+              _buildTextFormField(
                 controller: _taxaFixaController,
-                decoration: const InputDecoration(labelText: 'Taxa Fixa'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira a taxa fixa';
-                  }
-                  return null;
-                },
+                label: 'Taxa Fixa',
+                validatorMessage: 'Por favor, insira a taxa fixa',
                 keyboardType: TextInputType.number,
               ),
-              TextFormField(
+              _buildTextFormField(
                 controller: _descontoMarketplaceController,
-                decoration: InputDecoration(labelText: 'Desconto Marketplace'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o desconto do marketplace';
-                  }
-                  return null;
-                },
+                label: 'Desconto Marketplace',
+                validatorMessage: 'Por favor, insira o desconto do marketplace',
                 keyboardType: TextInputType.number,
               ),
-              TextFormField(
+              _buildTextFormField(
                 controller: _descontoSellerController,
-                decoration: InputDecoration(labelText: 'Desconto Seller'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o desconto do seller';
-                  }
-                  return null;
-                },
+                label: 'Desconto Seller',
+                validatorMessage: 'Por favor, insira o desconto do seller',
                 keyboardType: TextInputType.number,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // Se o formulário for válido, exiba uma snackbar
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Processando Dados')),
+                      const SnackBar(content: Text('Processando Dados')),
                     );
                   }
                 },
-                child: Text('Salvar'),
+                child: const Text('Salvar'),
               ),
             ],
-          )),
-        ));
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextFormField({
+    required TextEditingController controller,
+    required String label,
+    required String validatorMessage,
+    TextInputType keyboardType = TextInputType.text,
+  }) {
+    return TextFormField(
+      controller: controller,
+      decoration: InputDecoration(labelText: label),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return validatorMessage;
+        }
+        return null;
+      },
+      keyboardType: keyboardType,
+    );
   }
 }

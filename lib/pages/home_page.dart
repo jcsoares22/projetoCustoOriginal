@@ -14,26 +14,46 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pagina inicial'),
+        actions: [
+          Padding(padding: EdgeInsets.all(20)),
+          const DropdownMenuItem(
+            value: 'Config',
+            child: Row(
+              children: [
+                Icon(
+                  Icons.exit_to_app,
+                  color: Colors.black87,
+                ),
+                SizedBox(width: 10),
+                Text('Configurações'),
+              ],
+            ),
+          ),
+          
+        ],
       ),
       drawer: AppDrawer(),
-      body: Container(
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
         child: Container(
-            child: Column(
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'nome produto',
-                suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.search),
-                  focusColor: Colors.amber,
+          child: Container(
+              child: Column(
+            children: [
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'nome produto',
+                  suffixIcon: IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.search),
+                    focusColor: Colors.amber,
+                  ),
                 ),
               ),
-            ),
-            Divider(),
-            ListBody(),
-          ],
-        )),
+              Divider(),
+              ListBody(),
+            ],
+          )),
+        ),
       ),
     );
     Divider();

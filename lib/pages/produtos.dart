@@ -16,7 +16,7 @@ class _ProdutosState extends State<Produtos> {
       appBar: AppBar(
         title: const Text('Produtos'),
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: Buttons(),
     );
   }
