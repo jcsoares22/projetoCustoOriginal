@@ -1,6 +1,6 @@
-import 'package:custo/components/app_drawer.dart';
-import 'package:custo/components/buttons.dart';
-import 'package:custo/components/components_marketplaces.dart';
+import 'package:projetocusto/components/app_drawer.dart';
+import 'package:projetocusto/components/buttons.dart';
+import 'package:projetocusto/components/components_marketplaces.dart';
 import 'package:flutter/material.dart';
 
 class Marketplaces extends StatefulWidget {
@@ -46,19 +46,16 @@ class _MarketplacesState extends State<Marketplaces> {
               child: ListView(
             children: <Widget>[
               Buttons(),
-              Container(
-                margin: EdgeInsets.all(10),
-                child: TextFormField(
-                  cursorWidth: 50,
-                  controller: _codigoController,
-                  decoration: InputDecoration(labelText: 'Código'),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Por favor, insira o código';
-                    }
-                    return null;
-                  },
-                ),
+              TextFormField(
+                cursorWidth: 50,
+                controller: _codigoController,
+                decoration: InputDecoration(labelText: 'Código'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, insira o código';
+                  }
+                  return null;
+                },
               ),
               TextFormField(
                 controller: _empresaController,

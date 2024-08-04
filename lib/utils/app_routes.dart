@@ -1,8 +1,8 @@
-import 'package:custo/pages/despesas.dart';
-import 'package:custo/pages/home_page.dart';
-import 'package:custo/pages/marketplaces.dart';
-import 'package:custo/pages/produtos.dart';
 import 'package:flutter/material.dart';
+import 'package:projetocusto/pages/despesas.dart';
+import 'package:projetocusto/pages/home_page.dart';
+import 'package:projetocusto/pages/marketplaces.dart';
+import 'package:projetocusto/pages/produtos.dart';
 
 class AppRoutes {
   static const HOME = '/';

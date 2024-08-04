@@ -1,4 +1,4 @@
-import 'package:custo/components/app_drawer.dart';
+import 'package:projetocusto/components/app_drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

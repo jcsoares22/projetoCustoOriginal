@@ -1,6 +1,6 @@
-import 'package:custo/pages/home_page.dart';
-import 'package:custo/utils/app_routes.dart';
+
 import 'package:flutter/material.dart';
+import 'package:projetocusto/utils/app_routes.dart';
 
 void main() {
   runApp(const MyApp());
