@@ -47,36 +47,36 @@ class _MarketplacesState extends State<Marketplaces> {
           child: ListView(
             children: <Widget>[
               Buttons(),
-              _buildTextFormField(
+              _validarCampos(
                 controller: _codigoController,
                 label: 'Código',
                 validatorMessage: 'Por favor, insira o código',
                 keyboardType: TextInputType.number,
               ),
-              _buildTextFormField(
+              _validarCampos(
                 controller: _empresaController,
                 label: 'Empresa',
                 validatorMessage: 'Por favor, insira a empresa',
               ),
-              _buildTextFormField(
+              _validarCampos(
                 controller: _comissaoController,
                 label: 'Comissão Valor Ferte',
                 validatorMessage: 'Por favor, insira a comissão',
                 keyboardType: TextInputType.number,
               ),
-              _buildTextFormField(
+              _validarCampos(
                 controller: _taxaFixaController,
                 label: 'Taxa Fixa',
                 validatorMessage: 'Por favor, insira a taxa fixa',
                 keyboardType: TextInputType.number,
               ),
-              _buildTextFormField(
+              _validarCampos(
                 controller: _descontoMarketplaceController,
                 label: 'Desconto Marketplace',
                 validatorMessage: 'Por favor, insira o desconto do marketplace',
                 keyboardType: TextInputType.number,
               ),
-              _buildTextFormField(
+              _validarCampos(
                 controller: _descontoSellerController,
                 label: 'Desconto Seller',
                 validatorMessage: 'Por favor, insira o desconto do seller',
@@ -101,7 +101,7 @@ class _MarketplacesState extends State<Marketplaces> {
     );
   }
 
-  Widget _buildTextFormField({
+  Widget _validarCampos({
     required TextEditingController controller,
     required String label,
     required String validatorMessage,
