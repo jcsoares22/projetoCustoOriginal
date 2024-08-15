@@ -36,9 +36,9 @@ class _DespesasState extends State<Despesas> {
             Row(
               children: <Widget>[
                 Expanded(
+                  flex: 1,
                   child: TextFormField(
                     cursorWidth: 50,
-                  
                     controller: _codigoController,
                     decoration: const InputDecoration(labelText: 'Código'),
                     validator: (value) {
@@ -51,6 +51,7 @@ class _DespesasState extends State<Despesas> {
                 ),
                 SizedBox(width: 10), // Espaço entre os campos
                 Expanded(
+                  flex: 5,
                   child: TextFormField(
                     controller: _descricaoController,
                     decoration: const InputDecoration(labelText: 'Descrição'),
@@ -62,19 +63,25 @@ class _DespesasState extends State<Despesas> {
                     },
                   ),
                 ),
+                SizedBox(width: 10),
+                Expanded(
+                  flex: 6,
+                  child: TextFormField(
+                    controller: _valorDespesaController,
+                    decoration:
+                        const InputDecoration(labelText: 'Valor despesa'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o Valor da despesa';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
               ],
             ),
-            SizedBox(height: 10), // Espaço entre as linhas de formulário
-            TextFormField(
-              controller: _valorDespesaController,
-              decoration: const InputDecoration(labelText: 'Valor despesa'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Por favor, insira o Valor da despesa';
-                }
-                return null;
-              },
-            ),
+
+            ///  SizedBox(height: 10), // Espaço entre as linhas de formulário
           ],
         ),
       ),

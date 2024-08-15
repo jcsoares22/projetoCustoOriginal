@@ -36,8 +36,8 @@ class _ProdutosState extends State<Produtos> {
               Row(
                 children: <Widget>[
                   Expanded(
+                    flex: 1,
                     child: TextFormField(
-                      cursorWidth: 50,
                       controller: _codigoController,
                       decoration: const InputDecoration(labelText: 'Código'),
                       validator: (value) {
@@ -50,6 +50,7 @@ class _ProdutosState extends State<Produtos> {
                   ),
                   SizedBox(width: 10), // Espaço entre os campos
                   Expanded(
+                    flex: 10,
                     child: TextFormField(
                       controller: _descricaoController,
                       decoration: const InputDecoration(labelText: 'Descrição'),
