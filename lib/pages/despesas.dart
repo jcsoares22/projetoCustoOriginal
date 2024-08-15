@@ -1,5 +1,4 @@
 import 'package:projetocusto/components/app_drawer.dart';
-import 'package:projetocusto/components/buttons.dart';
 import 'package:flutter/material.dart';
 
 class Despesas extends StatefulWidget {
@@ -12,10 +11,15 @@ class Despesas extends StatefulWidget {
 class _DespesasState extends State<Despesas> {
   final _codigoController = TextEditingController();
   final _descricaoController = TextEditingController();
+  final _valorDespesaController =
+      TextEditingController(); // Adicionei o controller para valor despesa
+
   @override
   void dispose() {
-    super.dispose();
     _codigoController.dispose();
+    _descricaoController.dispose();
+    _valorDespesaController.dispose(); // Dispose do controller adicionado
+    super.dispose();
   }
 
   @override
@@ -29,33 +33,44 @@ class _DespesasState extends State<Despesas> {
         padding: const EdgeInsets.all(10.0),
         child: ListView(
           children: <Widget>[
-            TextFormField(
-              cursorWidth: 50,
-              controller: _codigoController,
-              decoration: const InputDecoration(labelText: 'Código'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Por favor, insira o código';
-                }
-                return null;
-              },
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: TextFormField(
+                    cursorWidth: 50,
+                  
+                    controller: _codigoController,
+                    decoration: const InputDecoration(labelText: 'Código'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira o código';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                SizedBox(width: 10), // Espaço entre os campos
+                Expanded(
+                  child: TextFormField(
+                    controller: _descricaoController,
+                    decoration: const InputDecoration(labelText: 'Descrição'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor, insira a Descrição';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+              ],
             ),
+            SizedBox(height: 10), // Espaço entre as linhas de formulário
             TextFormField(
-              controller: _descricaoController,
-              decoration: const InputDecoration(labelText: 'Descrição'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Por favor, insira a Descrição';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: _descricaoController,
+              controller: _valorDespesaController,
               decoration: const InputDecoration(labelText: 'Valor despesa'),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Por favor, insira a Valor despesa';
+                  return 'Por favor, insira o Valor da despesa';
                 }
                 return null;
               },
