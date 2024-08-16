@@ -11,8 +11,7 @@ class Preferencias extends StatefulWidget {
 
 class _PreferenciasState extends State<Preferencias> {
   bool _isChecked = false; // Estado do checkbox
-  final TextEditingController _controller =
-      TextEditingController(); // Controlador do TextField
+  final TextEditingController _controller = TextEditingController(); // Controlador do TextField
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +23,7 @@ class _PreferenciasState extends State<Preferencias> {
         padding: const EdgeInsets.all(20),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Row(
+          child: Row(   
             children: [
               Checkbox(
                 value: _isChecked,
@@ -40,9 +39,9 @@ class _PreferenciasState extends State<Preferencias> {
                     controller: _controller,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
-                      labelText: 'Percendo de lucro desejado',
+                      labelText: 'Percento de lucro desejado.',
                       border: OutlineInputBorder(),
-                    )),
+                    ),),
               ),
             ],
           ),

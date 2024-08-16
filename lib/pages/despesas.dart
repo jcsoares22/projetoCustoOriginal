@@ -12,8 +12,7 @@ class Despesas extends StatefulWidget {
 class _DespesasState extends State<Despesas> {
   final _codigoController = TextEditingController();
   final _descricaoController = TextEditingController();
-  final _valorDespesaController =
-      TextEditingController(); // Adicionei o controller para valor despesa
+  final _valorDespesaController = TextEditingController(); // Adicionei o controller para valor despesa
   final _decoracao = BoxDeracation().decoracao;
 
   @override
@@ -34,10 +33,12 @@ class _DespesasState extends State<Despesas> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Row(
+          
           children: <Widget>[
             Expanded(
               flex: 2,
               child: Container(
+                 
                 decoration: _decoracao,
                 child: TextFormField(
                   cursorWidth: 50,
