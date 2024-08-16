@@ -1,7 +1,6 @@
 import 'package:projetocusto/components/app_drawer.dart';
-import 'package:projetocusto/components/buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:projetocusto/components/compenente_produto.dart';
+import 'package:projetocusto/components/box_deracation.dart';
 
 class Produtos extends StatefulWidget {
   const Produtos({super.key});
@@ -13,6 +12,7 @@ class Produtos extends StatefulWidget {
 class _ProdutosState extends State<Produtos> {
   final _codigoController = TextEditingController();
   final _descricaoController = TextEditingController();
+  final _decoracao = BoxDeracation().decoracao;
 
   @override
   void dispose() {
@@ -28,45 +28,44 @@ class _ProdutosState extends State<Produtos> {
         title: const Text('Produtos'),
       ),
       drawer: const AppDrawer(),
-      body: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: ListView(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    flex: 1,
-                    child: TextFormField(
-                      controller: _codigoController,
-                      decoration: const InputDecoration(labelText: 'Código'),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira o código';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                  SizedBox(width: 10), // Espaço entre os campos
-                  Expanded(
-                    flex: 10,
-                    child: TextFormField(
-                      controller: _descricaoController,
-                      decoration: const InputDecoration(labelText: 'Descrição'),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira a Descrição';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                ],
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              flex: 2,
+              child: Container(
+                decoration: _decoracao,
+                child: TextFormField(
+                  controller: _codigoController,
+                  decoration: const InputDecoration(labelText: '  Código'),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor, insira o código';
+                    }
+                    return null;
+                  },
+                ),
               ),
-              SizedBox(height: 10), // Espaço entre as linhas de formulário
-            ],
-          ),
+            ),
+            SizedBox(width: 10), // Espaço entre os campos
+            Expanded(
+              flex: 12,
+              child: Container(
+                 decoration: _decoracao,
+                child: TextFormField(
+                  controller: _descricaoController,
+                  decoration: const InputDecoration(labelText: 'Descrição'),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor, insira a Descrição';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

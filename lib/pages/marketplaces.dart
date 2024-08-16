@@ -1,8 +1,6 @@
 import 'package:projetocusto/components/app_drawer.dart';
 import 'package:projetocusto/components/buttons.dart';
-import 'package:projetocusto/components/components_marketplaces.dart';
 import 'package:flutter/material.dart';
-import 'package:projetocusto/model/modelo_marketplace.dart';
 
 class Marketplaces extends StatefulWidget {
   const Marketplaces({super.key});
