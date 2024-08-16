@@ -48,6 +48,14 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushReplacementNamed(AppRoutes.DESPESAS);
             }),
           ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Prefêrencias'),
+            onTap: (() {
+              Navigator.of(context).pushReplacementNamed(AppRoutes.PREFERENCIA);
+            }),
+          ),
         ],
       ),
     );

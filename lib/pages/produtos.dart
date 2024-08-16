@@ -38,7 +38,10 @@ class _ProdutosState extends State<Produtos> {
                 decoration: _decoracao,
                 child: TextFormField(
                   controller: _codigoController,
-                  decoration: const InputDecoration(labelText: '  Código'),
+                  decoration: const InputDecoration(
+                    labelText: 'Código',
+                    contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Por favor, insira o código';
@@ -52,7 +55,7 @@ class _ProdutosState extends State<Produtos> {
             Expanded(
               flex: 12,
               child: Container(
-                 decoration: _decoracao,
+                decoration: _decoracao,
                 child: TextFormField(
                   controller: _descricaoController,
                   decoration: const InputDecoration(labelText: 'Descrição'),

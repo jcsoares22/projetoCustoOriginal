@@ -1,6 +1,7 @@
 import 'package:projetocusto/components/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:projetocusto/components/box_deracation.dart';
+import 'package:projetocusto/components/config.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,22 +17,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pagina inicial'),
-        actions: const [
-          Padding(padding: EdgeInsets.all(20)),
-          DropdownMenuItem(
-            value: 'Config',
-            child: Row(
-              children: [
-                Icon(
-                  Icons.exit_to_app,
-                  color: Colors.black87,
-                ),
-                SizedBox(width: 10),
-                Text('Configurações'),
-              ],
-            ),
-          ),
-        ],
+        actions: const [Config()],
       ),
       drawer: AppDrawer(),
       body: Padding(
@@ -56,6 +42,5 @@ class _HomePageState extends State<HomePage> {
             )),
       ),
     );
-    Divider();
   }
 }
