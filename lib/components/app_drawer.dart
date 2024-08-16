@@ -1,3 +1,4 @@
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:projetocusto/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class AppDrawer extends StatelessWidget {
             title: Text('Menu'),
             automaticallyImplyLeading: false,
           ),
-          Divider(),
+        const Divider(),
           ListTile(
             leading: Icon(Icons.home),
             title: Text('Home'),
@@ -23,7 +24,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushReplacementNamed(AppRoutes.HOME);
             }),
           ),
-          Divider(),
+        const Divider(),
           ListTile(
             leading: Icon(Icons.production_quantity_limits),
             title: Text('MarketPlace'),
@@ -32,15 +33,15 @@ class AppDrawer extends StatelessWidget {
                   .pushReplacementNamed(AppRoutes.MARKETPLACES);
             }),
           ),
-          Divider(),
+        const Divider(),
           ListTile(
-            leading: Icon(Icons.shop),
+             leading: FaIcon(FontAwesomeIcons.shoePrints),
             title: Text('Produtos'),
             onTap: (() {
               Navigator.of(context).pushReplacementNamed(AppRoutes.PRODUTOS);
             }),
           ),
-          Divider(),
+        const Divider(),
           ListTile(
             leading: Icon(Icons.add_chart_sharp),
             title: Text('Despesas'),
@@ -48,7 +49,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushReplacementNamed(AppRoutes.DESPESAS);
             }),
           ),
-          Divider(),
+        const Divider(),
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Prefêrencias'),

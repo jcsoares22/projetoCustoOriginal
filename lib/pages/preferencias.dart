@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projetocusto/components/app_drawer.dart';
-import 'package:projetocusto/components/config.dart';
 
 class Preferencias extends StatefulWidget {
   const Preferencias({super.key});

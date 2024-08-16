@@ -19,28 +19,23 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Pagina inicial'),
         actions: const [Config()],
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Container(
             decoration: _decoracao,
-            child: Column(
-              children: [
-                TextField(
+            child: TextField(
                   decoration: InputDecoration(
-                    labelText: 'nome produto',
+                    labelText: 'nome produto'.padRight(120),
                     suffixIcon: IconButton(
                       onPressed: () {},
                       icon: Icon(Icons.search),
                       focusColor: Colors.amber,
                     ),
                   ),
-                ),
-                Divider(),
-                ListBody(),
-              ],
-            )),
+                ),        
       ),
+    ),
     );
   }
 }

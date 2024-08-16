@@ -33,12 +33,10 @@ class _DespesasState extends State<Despesas> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Row(
-          
           children: <Widget>[
             Expanded(
               flex: 2,
               child: Container(
-                 
                 decoration: _decoracao,
                 child: TextFormField(
                   cursorWidth: 50,
