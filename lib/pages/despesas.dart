@@ -36,7 +36,7 @@ class _DespesasState extends State<Despesas> {
             Row(
               children: <Widget>[
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: TextFormField(
                     cursorWidth: 50,
                     controller: _codigoController,
@@ -65,7 +65,7 @@ class _DespesasState extends State<Despesas> {
                 ),
                 SizedBox(width: 10),
                 Expanded(
-                  flex: 6,
+                  flex: 2,
                   child: TextFormField(
                     controller: _valorDespesaController,
                     decoration:
