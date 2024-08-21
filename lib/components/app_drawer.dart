@@ -16,7 +16,7 @@ class AppDrawer extends StatelessWidget {
             title: Text('Menu'),
             automaticallyImplyLeading: false,
           ),
-        const Divider(),
+          const Divider(),
           ListTile(
             leading: Icon(Icons.home),
             title: Text('Home'),
@@ -24,7 +24,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushReplacementNamed(AppRoutes.HOME);
             }),
           ),
-        const Divider(),
+          const Divider(),
           ListTile(
             leading: Icon(Icons.production_quantity_limits),
             title: Text('MarketPlace'),
@@ -33,23 +33,24 @@ class AppDrawer extends StatelessWidget {
                   .pushReplacementNamed(AppRoutes.MARKETPLACES);
             }),
           ),
-        const Divider(),
+          const Divider(),
           ListTile(
-             leading: FaIcon(FontAwesomeIcons.shoePrints),
+            leading: FaIcon(FontAwesomeIcons.shoePrints),
             title: Text('Produtos'),
             onTap: (() {
               Navigator.of(context).pushReplacementNamed(AppRoutes.PRODUTOS);
             }),
           ),
-        const Divider(),
+          const Divider(),
           ListTile(
             leading: Icon(Icons.add_chart_sharp),
             title: Text('Despesas'),
             onTap: (() {
-              Navigator.of(context).pushReplacementNamed(AppRoutes.DESPESAS);
+              Navigator.of(context)
+                  .pushReplacementNamed(AppRoutes.PESQ_DESPESAS);
             }),
           ),
-        const Divider(),
+          const Divider(),
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Prefêrencias'),

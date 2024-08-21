@@ -26,7 +26,7 @@ class _PesqDespesasState extends State<PesqDespesas> {
           decoration: _decoracao,
           child: TextField(
             decoration: InputDecoration(
-              labelText: 'nome produto'.padRight(120),
+              labelText: 'Nome da despesa',
               suffixIcon: IconButton(
                 onPressed: () {},
                 icon: Icon(Icons.search),
