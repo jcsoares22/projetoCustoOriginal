@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:projetocusto/pages/despesas.dart';
-import 'package:projetocusto/pages/home_page.dart';
-import 'package:projetocusto/pages/marketplaces.dart';
-import 'package:projetocusto/pages/preferencias.dart';
-import 'package:projetocusto/pages/produtos.dart';
+import 'package:projetocusto/feature/despesas/despesas.dart';
+import 'package:projetocusto/feature/despesas/pesq_despesas.dart';
+import 'package:projetocusto/feature/principal/home_page.dart';
+import 'package:projetocusto/feature/marketplaces/marketplaces.dart';
+import 'package:projetocusto/feature/preferencia/preferencias.dart';
+import 'package:projetocusto/feature/produto/produtos.dart';
 
 class AppRoutes {
   static const HOME = '/';
@@ -11,6 +12,7 @@ class AppRoutes {
   static const PRODUTOS = '/produtos';
   static const DESPESAS = '/despesas';
   static const PREFERENCIA = '/preferencia';
+  static const PESQ_DESPESAS = '/pesq_despesas';
 
   static Map<String, Widget Function(dynamic ctx)> getroutes = {
     AppRoutes.HOME: (ctx) => const HomePage(),
@@ -18,5 +20,6 @@ class AppRoutes {
     AppRoutes.PRODUTOS: (ctx) => const Produtos(),
     AppRoutes.DESPESAS: (ctx) => const Despesas(),
     AppRoutes.PREFERENCIA: (ctx) => const Preferencias(),
+    AppRoutes.PESQ_DESPESAS: (ctx) => const PesqDespesas(),
   };
 }
