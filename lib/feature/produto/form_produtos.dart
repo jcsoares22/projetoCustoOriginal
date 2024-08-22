@@ -108,7 +108,39 @@ class _FormProdutosState extends State<FormProdutos> {
                   ],
                 ),
               ),
-
+              Container(
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: TextFormField(
+                        controller: _codigoController,
+                        decoration:
+                            const InputDecoration(labelText: 'Preço Custo'),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor, insira o Preço Custo';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 10), // Espaço entre os campos
+                    Expanded(
+                      child: TextFormField(
+                        controller: _descricaoController,
+                        decoration:
+                            const InputDecoration(labelText: 'Preço venda'),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor, insira o preço venda';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Expanded(
                 child: TextFormField(
                   decoration: InputDecoration(labelText: 'Url da Imagem'),
