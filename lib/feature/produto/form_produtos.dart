@@ -70,6 +70,7 @@ class _FormProdutosState extends State<FormProdutos> {
       ),
       drawer: const AppDrawer(),
       body: Scaffold(
+          key: _formKey,
         body: Padding(
           padding: const EdgeInsets.all(10.0),
           child: ListView(

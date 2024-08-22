@@ -28,7 +28,7 @@ class Produto with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> toggleFavorite(String _token, String userId) async {
+  Future<void> toggleFavorite(String _token) async {
     try {
       _toggleFavorite();
       final response = await http.put(
