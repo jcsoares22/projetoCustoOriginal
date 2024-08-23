@@ -1,15 +1,21 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:projetocusto/components/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:projetocusto/model/produto.dart';
+import 'package:projetocusto/utils/constants.dart';
+import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
-class FormProdutos extends StatefulWidget {
-  const FormProdutos({super.key});
+class ProdutosPage extends StatefulWidget {
+  const ProdutosPage({super.key});
 
   @override
-  State<FormProdutos> createState() => _FormProdutosState();
+  State<ProdutosPage> createState() => _ProdutosPageState();
 }
 
-class _FormProdutosState extends State<FormProdutos> {
+class _ProdutosPageState extends State<ProdutosPage> {
   final _codigoController = TextEditingController();
   final _descricaoController = TextEditingController();
   final _formData = <String, Object>{};
@@ -45,7 +51,22 @@ class _FormProdutosState extends State<FormProdutos> {
       return;
     }
   }
-  //  _formKey.currentState?.save();
+  // _formKey.currentState?.save();
+
+  Future<void> addProduct(Produto produto) async {
+    final future = http.post(
+      Uri.parse('${Constants.PRODUCT_BASE_URL}.json?produto'),
+      body: jsonEncode(
+        {
+          "name": produto.nome,
+          "Descricao": produto.descricao,
+          "preço": produto.preco,
+          "imageUrl": produto.imageUrl,
+          "precoVenda": produto.precoVenda
+        },
+      ),
+    );
+  }
 
   bool isValidadImageURL(String url) {
     bool isValidUrl = Uri.tryParse(url)?.hasAbsolutePath ?? false;
@@ -67,10 +88,16 @@ class _FormProdutosState extends State<FormProdutos> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Produtos'),
+        actions: [
+          IconButton(
+            onPressed: _submitForm,
+            icon: const Icon(Icons.save),
+          )
+        ],
       ),
       drawer: const AppDrawer(),
       body: Scaffold(
-          key: _formKey,
+        key: _formKey,
         body: Padding(
           padding: const EdgeInsets.all(10.0),
           child: ListView(
@@ -81,6 +108,7 @@ class _FormProdutosState extends State<FormProdutos> {
                     Expanded(
                       flex: 2,
                       child: TextFormField(
+                        initialValue: _formData['nome']?.toString(),
                         controller: _codigoController,
                         decoration: const InputDecoration(labelText: 'Código'),
                         validator: (value) {
@@ -89,6 +117,7 @@ class _FormProdutosState extends State<FormProdutos> {
                           }
                           return null;
                         },
+                        onSaved: (name) => _formData['nome'] = name ?? '',
                       ),
                     ),
                     SizedBox(width: 10), // Espaço entre os campos
