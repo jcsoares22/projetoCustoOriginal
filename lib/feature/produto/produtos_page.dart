@@ -1,12 +1,7 @@
-import 'dart:convert';
 import 'dart:math';
-
 import 'package:projetocusto/components/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:projetocusto/model/produto.dart';
-import 'package:projetocusto/utils/constants.dart';
-import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 
 class ProdutosPage extends StatefulWidget {
   const ProdutosPage({super.key});
@@ -53,18 +48,16 @@ class _ProdutosPageState extends State<ProdutosPage> {
   }
   // _formKey.currentState?.save();
 
-  Future<void> addProduct(Produto produto) async {
-    final future = http.post(
-      Uri.parse('${Constants.PRODUCT_BASE_URL}.json?produto'),
-      body: jsonEncode(
-        {
-          "name": produto.nome,
-          "Descricao": produto.descricao,
-          "preço": produto.preco,
-          "imageUrl": produto.imageUrl,
-          "precoVenda": produto.precoVenda
-        },
-      ),
+  Future<void> SaveProduct(Map<String, Object> data) async {
+    bool hasId = data['id'] != null;
+
+    final product = Produto(
+      id: hasId ? data['id'] as String : Random().nextDouble().toString(),
+      nome: data['name'] as String,
+      descricao: data['descripton'] as String,
+      preco: data['price'] as double,
+      precoVenda: data['price'] as double,
+      imageUrl: data['imageUrl'] as String,
     );
   }
 
