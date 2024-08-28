@@ -16,7 +16,7 @@ class _PesqDespesasState extends State<PesqDespesas> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pagina inicial'),
+        title: const Text('Pesquisar despesas'),
         actions: const [Config()],
       ),
       drawer: const AppDrawer(),

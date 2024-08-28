@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
                     labelText: 'nome produto'.padRight(120),
                     suffixIcon: IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.search),
+                      icon: const Icon(Icons.search),
                       focusColor: Colors.amber,
                     ),
                   ),
