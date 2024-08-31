@@ -23,26 +23,42 @@ class Produto with ChangeNotifier {
     this.isFavorite = false,
   });
 
-  void _toggleFavorite() {
-    isFavorite = !isFavorite;
-    notifyListeners();
-  }
+  Future<void> submitData() async {
+    final response = await http.post(
+      Uri.parse('http://192.168.2.102:5000/save_data'),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode({
+        'CODIGO': 150,
+        'DESCRICAO': 'HOJE',
+        'COR': 'HOJE',
+        'VALOR_PRODUTO': 'HOJE',
+        'FOTO': 'T', // Ajuste conforme necessário
+        'PERC_LUCRO': 'T', // Ajuste conforme necessário
+        'PERC_LUCRO2': 'F', // Ajuste conforme necessário
+        'PERC_LUCRO3': 'T', // Ajuste conforme necessário
+        'COD_MARKETPLACE': 'F', // Ajuste conforme necessário
+        'CUSTO_TOTAL': 'F', // Ajuste conforme necessário
+        'CUSTO_TOTAL_VENDA': 'T', // Ajuste conforme necessário
+        'FRETE': 'F', // Ajuste conforme necessário
+        'CUSTO_TOTAL_DESPESA': 'T', // Ajuste conforme necessário
+        'VLR1': 'T', // Ajuste conforme necessário
+        'VLR2': 'T', // Ajuste conforme necessário
+        'VLR3': 'T', // Ajuste conforme necessário
+      }),
+    );
 
-  Future<void> toggleFavorite(String _token) async {
-    try {
-      _toggleFavorite();
-      final response = await http.put(
-        Uri.parse(
-          '${Constants.PRODUCT_BASE_URL}.json?auth=$_token',
-        ),
-        body: jsonEncode(isFavorite),
-      );
-
-      if (response.statusCode >= 400) {
-        _toggleFavorite();
-      }
-    } catch (_) {
-      _toggleFavorite();
+    if (response.statusCode == 200) {
+      // Sucesso ao salvar os dados
+      print('Dados salvos com sucesso');
+    } else {
+      // Falha ao salvar os dados
+      print(
+          'Falha ao salvar os dados: ${response.statusCode} - ${response.body}');
     }
   }
+
+
+  
 }
