@@ -2,6 +2,8 @@ import 'dart:math';
 import 'package:projetocusto/components/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:projetocusto/model/produto.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class ProdutosPage extends StatefulWidget {
   const ProdutosPage({super.key});
@@ -19,46 +21,40 @@ class _ProdutosPageState extends State<ProdutosPage> {
   final _formKey = GlobalKey<FormState>();
   bool _isLoanding = false;
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (_formData.isEmpty) {
-      final arg = ModalRoute.of(context)?.settings.arguments;
-
-      if (arg != null) {
-        final product = arg as Produto;
-
-        _formData['id'] = product.id;
-        _formData['nome'] = product.nome;
-        _formData['preco'] = product.preco;
-        _formData['descricao'] = product.descricao;
-        _formData['precoVenda'] = product.precoVenda;
-        _formData['imageUrl'] = product.imageUrl;
-
-        _imageUrlController.text = product.imageUrl;
-      }
-    }
-  }
-
-  Future _submitForm() async {
-    final isValid = _formKey.currentState?.validate() ?? false;
-    if (!isValid) {
-      return;
-    }
-  }
-  // _formKey.currentState?.save();
-
-  Future<void> SaveProduct(Map<String, Object> data) async {
-    bool hasId = data['id'] != null;
-
-    final product = Produto(
-      id: hasId ? data['id'] as String : Random().nextDouble().toString(),
-      nome: data['name'] as String,
-      descricao: data['descripton'] as String,
-      preco: data['price'] as double,
-      precoVenda: data['price'] as double,
-      imageUrl: data['imageUrl'] as String,
+  Future<void> _submitForm() async {
+    final response = await http.post(
+      Uri.parse('http://192.168.2.102:5000/save_data'),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode({
+        'CODIGO': _codigoController,
+        'DESCRICAO': _descricaoController,
+        'COR': 'HOJE',
+        'VALOR_PRODUTO': 'HOJE',
+        'FOTO': 'T', // Ajuste conforme necessário
+        'PERC_LUCRO': 'T', // Ajuste conforme necessário
+        'PERC_LUCRO2': 'F', // Ajuste conforme necessário
+        'PERC_LUCRO3': 'T', // Ajuste conforme necessário
+        'COD_MARKETPLACE': 'F', // Ajuste conforme necessário
+        'CUSTO_TOTAL': 'F', // Ajuste conforme necessário
+        'CUSTO_TOTAL_VENDA': 'T', // Ajuste conforme necessário
+        'FRETE': 'F', // Ajuste conforme necessário
+        'CUSTO_TOTAL_DESPESA': 'T', // Ajuste conforme necessário
+        'VLR1': 'T', // Ajuste conforme necessário
+        'VLR2': 'T', // Ajuste conforme necessário
+        'VLR3': 'T', // Ajuste conforme necessário
+      }),
     );
+
+    if (response.statusCode == 200) {
+      // Sucesso ao salvar os dados
+      print('Dados salvos com sucesso');
+    } else {
+      // Falha ao salvar os dados
+      print(
+          'Falha ao salvar os dados: ${response.statusCode} - ${response.body}');
+    }
   }
 
   bool isValidadImageURL(String url) {
